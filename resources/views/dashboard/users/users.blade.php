@@ -23,6 +23,7 @@
                             <option value="Captain">Captain</option>
                             <option value="Lieutenant">Lieutenant</option>
                             <option value="2nd Lieutenant">2nd Lieutenant</option>
+                            <option value="Other">Other</option>
                         </select>
                         <p class="M_Txt_Info black "> Names</p>
                         <input type="text" name="names" autofocus placeholder="Names" class="input mabo16 M_Input_A">
@@ -50,9 +51,9 @@
                             <option value="2">Applicant</option>
                             <option value="99">System Admin</option>
                         </select>
-                        <p class="M_Txt_Info black "> Department</p>
+                        <p class="M_Txt_Info black "> Directorate</p>
                         <select class="custom-select M_select_A mabo16" name="department">
-                            <option class="grey" selected>Select Department</option>
+                            <option class="grey" selected>Select Directorate</option>
                             <option value="N/A">N/A</option>
                             <option value="Science">Science</option>
                             <option value="Technology">Technology</option>

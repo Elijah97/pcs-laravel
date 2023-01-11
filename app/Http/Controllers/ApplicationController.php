@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use PDF;
 
 class ApplicationController extends Controller
@@ -29,33 +30,43 @@ class ApplicationController extends Controller
 
     public function addApplication(Request $request)
     {
+
         $rules = array(
-            'title' => 'required',
             'categoryId' => 'required',
-            'qty' => 'required',
-            'unitPrice' => 'required',
-            'totalPrice' => 'required',
-            'neededBy' => 'required',
-            'reason' => 'required|max:255',
-            'neededBy' => 'required',
+            'project' => 'required',
+            'details' => 'required|max:255',
+            // 'item[0]' => 'required',
+            // 'desc[0]' => 'required',
+            // 'qty[0]' => 'required',
+            // 'unitPrice[0]' => 'required',
+            // 'totalPrice[0]' => 'required',
         );
         $validator = $request->validate($rules); {
             if (!$validator) {
                 return Redirect::back()->withErrors($validator)->withInput();
             } else {
+                $categoryId = $request->input('categoryId');
+                $project = $request->input('project'); 
+                $details = $request->input('details'); 
+                $uniqueId = Str::upper(Str::random(16));
 
-                $app = new Application;
-                $app->title = $request->input('title');
-                $app->ApplicantId = Auth::user()->id;
-                $app->categoryId = $request->input('categoryId');
-                $app->reason = $request->input('reason');
-                $app->qty = $request->input('qty');
-                $app->unitPrice = $request->input('unitPrice');
-                $app->totalPrice = $request->input('totalPrice');
-                $app->neededBy = $request->input('neededBy');
-                $app->reviewStatus = 0;
-                $app->approveStatus = 0;
-                $app->save();
+
+                for($i = 0; $i < count($request->item); $i++){
+                    $app = new Application;
+                    $app->categoryId = $categoryId;
+                    $app->project = $project;
+                    $app->details = $details;
+                    $app->uniqueId = $uniqueId;
+                    $app->item = $request->input('item')[$i];
+                    $app->desc = $request->input('desc')[$i];
+                    $app->qty = $request->input('qty')[$i];
+                    $app->unitPrice = $request->input('unitPrice')[$i];
+                    $app->totalPrice = $request->input('totalPrice')[$i];
+                    $app->ApplicantId = Auth::user()->id;
+                    $app->reviewStatus = 0;
+                    $app->approveStatus = 0;
+                    $app->save();
+                }
 
                 return Redirect::back()->with('success', 'Application sent');
             }
@@ -75,17 +86,16 @@ class ApplicationController extends Controller
                     "
             SELECT
                 applications.id,
-                applications.title,
+                applications.project,
                 applicant.rank,
                 applicant.names,
                 applicant.phone,
                 applicant.department,
-                applications.title,
+                applications.project,
                 categories.name as categoryName,
                 applications.created_at,
                 applications.qty,
                 applications.totalPrice,
-                applications.neededBy,
                 applications.reviewStatus,
                 applications.reviewerId,
                 reviewer.rank as reviewerRank,

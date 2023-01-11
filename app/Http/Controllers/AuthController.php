@@ -46,7 +46,8 @@ class AuthController extends Controller
             'name' => 'required|min:6|max:255',
             'userType' => 'required',
             'email' => 'required|min:6|max:255|email|unique:users',
-            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/|max:255'
+            'password' => 'required|min:6|max:255'
+            // 'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/|max:255'
         );
         $validator = $request->validate($rules); {
             if (!$validator) {

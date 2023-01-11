@@ -16,7 +16,7 @@
                             <div class="col-10">
 
                                 <p class="M_Txt_Large text-uppercase green">
-                                    {{ number_format($current_budget[0]->amount + $current_budget[0]->expenses) }} Rwf</p>
+                                    {{ $current_budget ? number_format($current_budget[0]->amount + $current_budget[0]->expenses) : '0' }} Rwf</p>
                                 <p class="M_Txt_Info grey"> This Month's budget</p>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-10">
                                 <p class="M_Txt_Large text-uppercase green">
-                                    {{ number_format($current_budget[0]->expenses) }} Rwf</p>
+                                   {{ $current_budget ? number_format($current_budget[0]->expenses) : '0' }} Rwf</p>
                                 <p class="M_Txt_Info grey"> This Month's Expenses</p>
                             </div>
                         </div>

@@ -252,6 +252,10 @@ a:hover{
     color: inherit;
 }
 
+.a-text{
+    text-decoration: none !important;
+}
+
 /* Cards */
 
 .M_Card16{
@@ -786,4 +790,9 @@ table tbody tr:hover{
     border-top: 1px solid #707070;
     margin: auto;  
     width: 50%;
+}
+
+.border-item{
+    padding: 32px;
+    border: 2px solid #707070;
 }

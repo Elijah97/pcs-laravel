@@ -133,7 +133,7 @@
                         <input type="text" name="name" autofocus placeholder="Names" class="input mabo16 M_Input_A">
                         <p class="M_Txt_Info black mabo8"> Description</p>
                         <textarea name="description" cols="50" rows="5" placeholder="Describe category here..." class="M_Textarea_A"></textarea><br />
-                        <center><button type="submit" class="btn M_Btn_2 mato16">Add Category</button></center>
+                        <center><button type="submit" class="btn M_Btn_2 mato16 text-uppercase">Add Category</button></center>
                     </form>
                 </div>
             </div>

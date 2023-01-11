@@ -86,7 +86,7 @@
                                     <th scope="col">Rank</th>
                                     <th scope="col">Names</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Application Title</th>
+                                    <th scope="col">Project Title</th>
                                     <th scope="col">Department</th>
                                     <th scope="col">Date applied</th>
                                     <th scope="col">Qty</th>
@@ -104,7 +104,7 @@
                                         <td>{{ $app->rank }}</td>
                                         <td>{{ $app->names }}</td>
                                         <td>{{ $app->phone }}</td>
-                                        <td>{{ $app->title }}</td>
+                                        <td>{{ $app->project }}</td>
                                         <td>{{ $app->department }}</td>
                                         <td>{{ date('d-m-Y', strtotime($app->created_at)) }}</td>
                                         <td>{{ $app->qty }}</td>
